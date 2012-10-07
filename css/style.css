@@ -1,0 +1,59 @@
+html{height: 100%;}
+body {
+	height: 100%;background: #555;margin: 0px; padding: 20px; overflow: hidden;
+}
+.caudio{float: left; background: url(MainSkin.jpg); width: 300px; height: 600px; border: 2px solid #ddd; border-radius: 5px; position: relative; -webkit-user-select: none;}
+.user_info{float: left; padding: 5px;}
+.user_ico{background: url(MainRMenuLoginIcon.png); width: 23px; height: 23px; float: left;}
+.user_name{float: left; font-size: 13px; color: white; line-height: 23px; padding-left: 5px;}
+
+.winbt{height: 30px; padding: 5px; float: right;}
+.winbt a{display: block; float: right; width: 25px; height: 21px;}
+.winbt a.close{background: url(WinCloseBtn.png);}
+.winbt a.min{background: url(WinZoomBtn.png);}
+.winbt a:hover{background-position: -25px 0px}
+
+.singer_info{overflow: hidden;width:150px; height: 150px; border: 2px solid #ddd; clear: both; margin: 0 auto; border-radius: 5px; background: url(DefaultArtistrImg.png) 50% 50% no-repeat; text-align: center;}
+.singer_info img{margin: 0 auto; width: 150px;}
+
+.control{height: 50px; position: relative; float: left;}
+.progress{height: 4px; border-radius: 2px; margin: 15px 15px 0px 15px; background: url(progress_bg.png); width: 260px; position: relative; clear: both;}
+.timeline{height: 4px; float: left; overflow: hidden; background: url(bar.png); width: 0px; position: relative; z-index: 2;}
+.point{float: left; display: block; width: 9px; height: 9px; background: url(point.png) 0px -2px; position: absolute; z-index: 100; left: 0px; margin-left: -5px;}
+
+.timewrap{position: relative; margin: 0px 15px 0px 15px;}
+.playtime,.alltime{color: white; font-family: ¿¬Ìå; font-size: 12px;}
+.playtime{position:absolute; left: 0px; top: 5px;}
+.alltime{position:absolute; right: 0px; top: 5px;}
+.playbts{margin-top: 20px; margin-left: 25px;}
+.play_prev_bt,.play_play_bt,.play_next_bt,.play_pause_bt{width: 45px; height: 45px; display: block; float: left; outline: none;}
+.play_prev_bt{background: url(BtnPlayPrev.png);}
+.play_play_bt{background: url(BtnPlayTPause.png);}
+.play_next_bt{background: url(BtnPlayNext.png);}
+.play_pause_bt{background: url(BtnPlayTPause.png) -180px 0px; display: none;}
+.play_pause_bt:hover{background-position: -225px 0px;}
+.play_prev_bt:hover,.play_play_bt:hover,.play_next_bt:hover{background-position: -45px 0px;}
+
+
+.play_volume_bt{width: 26px; height: 45px; background: url(MiniPlayerBtnVolume.png) -498px 50% no-repeat; display: block; float: left; margin-left: 10px;}
+.play_volume_bt.disable{background-position: -82px 50%;}
+.volume_slide{display: block;position:relative; width: 65px; height: 4px; float:left; background: url(progress_bg.png) 0px 50% no-repeat; border-radius: 2px; margin-top: 20px;}
+.volume_slide_progress{height: 4px; float: left; overflow: hidden; width: 52px; background-color: white;}
+.volume_slide .vpoint{display: block ;width: 5px; height: 10px; background: url(SoudSliderThumb.png) -14px -5px; position: absolute; top: -3px; left: 52px; margin-left: -2.5px;}
+
+.song_lrc{position: absolute; left: 15px; right: 15px; bottom: 25px; top: 300px; text-align: center; line-height: 20px; color: white; font-size: 12px; overflow: hidden;}
+.song_lrc dl{height: 20px; margin: 0px;}
+.song_lrc_table{width: 100%;}
+.curRow{color: #F0C91B;}
+
+
+.play_audio_controls{float: left; background: url(MainSkin.jpg); width: 380px; height: 600px; border: 2px solid #ddd; border-radius: 5px; position: relative; -webkit-user-select: none; margin-left: 15px;}
+.playcanvas{position: absolute; top: 0px; right: 0px; left: 0px; height: 200px; margin: 2px 4px 2px 4px;}
+.play_list{position: absolute; top: 204px; left: 0px; right: 0px; bottom: 0px; color: #666; font-size: 12px; background: white;}
+.play_list ul{margin: 0px; padding: 0px; list-style: none; padding: 0px 20px;}
+.play_list ul li{height: 30px; line-height: 30px; padding-left: 8px; cursor: default;}
+.play_list ul li:hover{background-color: #A9C5DE;}
+.play_list ul li span{display: block; float: left;}
+.play_list ul li span.list_index{width: 30px;}
+.play_list ul li span.list_name{width: 260px; overflow: hidden;}
+.play_list ul li span.list_time{width: 40px;}
