@@ -11,10 +11,13 @@ var bars = 256;
 var columns = [];
 var foo = 75;
 
+var last;
+var max;
+
 $(function(){
-	//²¥·Å°´Å¥¿ØÖÆ
+	//æ’­æ”¾æŒ‰é’®æ§åˆ¶
 	initPlayerBtlisteners();
-	//ÒôÁ¿
+	//éŸ³é‡
 	volumelistener();
 	
 	initplayer();
@@ -22,8 +25,11 @@ $(function(){
 	init();
 	animate();
 	
-	//¼ÓÔØ¸è´Ê
+	//åŠ è½½æ­Œè¯
 	loadLRC();
+	
+	//è¿‡æ»¤å™¨
+	filterControlListeners();
 })
 
 function initPlayerBtlisteners(){
@@ -187,5 +193,56 @@ function redraw(){
 		
 		var bar = columns[i];
 		bar.position.y = -container.offsetHeight+magnitude;
+	}
+}
+
+function filterControlListeners(){
+	$(".panner").mousedown(function(){
+		$(this).addClass("active");
+		last = undefined;
+		max = $(this).parent().width() - $(this).width();
+		draghandle(this,'x');
+		
+		return false;
+	});
+	
+	$(".fader").mousedown(function(){
+		$(this).addClass("active");
+		last = undefined;
+		max = $(this).parent().height() - $(this).height();
+		draghandle(this,'y');
+		
+		return false;
+	});
+	
+	$(document).mouseup(function(){
+		$(".panner").removeClass("active");
+		$(".fader").removeClass("active");
+	});
+	
+	function draghandle(ele, dir){
+		$(document).mousemove(function(e){
+			if($(ele).hasClass("active")){
+				var pos = dir == 'y' ? e.pageY : e.pageX;
+				var offpos = last ? pos - last : 0;
+				last = pos;
+				
+				var lefttop = dir == 'y' ? $(ele).position().top + offpos : $(ele).position().left + offpos;
+				lefttop = lefttop < 0 ? 0 : lefttop > max ? max : lefttop;
+				
+				var lt = dir == 'y'?"top":"left";				
+				$(ele).css(lt, lefttop);
+				
+				if (dir == 'x') {
+					var delta = (lefttop - max / 2) / max / 2;
+					p.panner.setPosition(delta, 0, 0.5);
+				}else{
+					var delta = 1-lefttop/max;
+					p.volume.gain.value = delta;
+				}
+			}
+			
+			return false;
+		});
 	}
 }
