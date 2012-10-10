@@ -115,7 +115,7 @@ function volumelistener(){
 }
 
 function initplayer(){
-	palyer = new AudioKeys('cunzai.ogg');
+	palyer = new AudioKeys('music/cunzai.ogg');
 	palyer.load(function() {
         var max = 2048;
         
@@ -130,7 +130,7 @@ function initplayer(){
 }
 
 function loadLRC(){
-	$.get("cunzai.lrc", function(data){
+	$.get("lrc/cunzai.lrc", function(data){
 		clrc=new LRC({lyric:data,lyricTable:$('.song_lrc_table')[0],lyricWrapper:$('.song_lrc')[0],curRowClassName:'curRow',separator:'\n'});
 	    if(clrc.IsLyricValid()){
 			clrc.DoSync(0);
@@ -192,20 +192,11 @@ function redraw(){
 		magnitude = mag * container.offsetHeight;
 		
 		var bar = columns[i];
-		bar.position.y = -container.offsetHeight+magnitude;
+		bar.position.y = -container.offsetHeight+magnitude+2;
 	}
 }
 
 function filterControlListeners(){
-	$(".panner").mousedown(function(){
-		$(this).addClass("active");
-		last = undefined;
-		max = $(this).parent().width() - $(this).width();
-		draghandle(this,'x');
-		
-		return false;
-	});
-	
 	$(".fader").mousedown(function(){
 		$(this).addClass("active");
 		last = undefined;

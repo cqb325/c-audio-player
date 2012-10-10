@@ -22,7 +22,7 @@ body {
 .point{float: left; display: block; width: 9px; height: 9px; background: url(point.png) 0px -2px; position: absolute; z-index: 100; left: 0px; margin-left: -5px;}
 
 .timewrap{position: relative; margin: 0px 15px 0px 15px;}
-.playtime,.alltime{color: white; font-size: 12px;}
+.playtime,.alltime{color: white; font-family: ����; font-size: 12px;}
 .playtime{position:absolute; left: 0px; top: 5px;}
 .alltime{position:absolute; right: 0px; top: 5px;}
 .playbts{margin-top: 20px; margin-left: 25px;}
@@ -47,25 +47,25 @@ body {
 .curRow{color: #F0C91B;}
 
 
-.play_audio_controls{float: left; background: url(MainSkin.jpg); width: 380px; height: 600px; border: 2px solid #ddd; border-radius: 5px; position: relative; -webkit-user-select: none; margin-left: 15px;}
-.playcanvas{position: absolute; top: 0px; right: 0px; left: 0px; height: 200px; margin: 2px 4px 2px 4px;}
-.play_list{position: absolute; top: 204px; left: 0px; right: 0px; bottom: 0px; color: white; font-size: 12px; overflow: hidden;}
-.play_list ul{margin: 0px; padding: 0px; list-style: none; padding: 0px 20px;}
-.play_list ul li{height: 30px; line-height: 30px; padding-left: 8px; cursor: default;}
+.play_audio_list{float: left; background: url(MainSkin.jpg); width: 300px; height: 600px; border: 2px solid #ddd; border-radius: 5px; position: relative; -webkit-user-select: none; margin-left: 15px;}
+.play_audio_list_label{background:url(document-music-playlist.png) no-repeat 0px 2px;font-size: 12px; color: white; padding: 3px 5px 3px 18px; margin: 5px 0px 0px 5px ;}
+.play_list{position: absolute; top: 30px; left: 0px; right: 0px; bottom: 30px; padding: 0px 20px; color: white; font-size: 12px; overflow: hidden;}
+.play_list ul{margin: 0px; padding: 0px; list-style: none;}
+.play_list ul li{height: 30px; line-height: 30px; padding-left: 8px; cursor: default; border-radius: 4px;}
 .play_list ul li:hover{background-color: #A9C5DE;}
+.play_list ul li.active{background-color: #A9C5DE;}
 .play_list ul li span{display: block; float: left;}
 .play_list ul li span.list_index{width: 30px;}
-.play_list ul li span.list_name{width: 260px; overflow: hidden;}
+.play_list ul li span.list_name{width: 180px; overflow: hidden;}
 .play_list ul li span.list_time{width: 40px;}
 
-.play_audio_filters{float: left; background: url(MainSkin.jpg); width: 410px; height: 300px; border: 2px solid #ddd; border-radius: 5px; position: relative; -webkit-user-select: none; margin-left: 15px; padding: 10px;}
+.play_audio_filters{float: left; background: url(MainSkin.jpg); width: 410px; height: 580px; border: 2px solid #ddd; border-radius: 5px; position: relative; -webkit-user-select: none; margin-left: 15px; padding: 10px;}
+.playcanvas{position: absolute; top: 0px; right: 0px; left: 0px; height: 200px; margin: 2px 10px 2px 10px;}
 
-.channel{display: inline-block; width: 55px; margin: 0px 6px; padding: 4px; background: rgba(0, 0, 0, 0.3); border-radius: 4px; box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);}
-.pan {height: 30px;margin: 30px 0 0;}
-.pan-track {position: relative;width: 50px;height: 8px;margin: 20px auto;background: #333; border-radius: 4px;}
-.panner {width: 8px;height: 30px;position: absolute;top: -12px;left: 22px;background: #DDD;border-radius: 2px;box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);cursor: pointer;}
-.track {position: relative;width: 8px;height: 220px;margin: 10px auto 0;background: #333;border-radius: 4px;}
-.fader {position: absolute;width: 35px;height: 30px;left: -13px;top: 200px;
+.channels{position: absolute; top: 200px; bottom: 10px; left: 10px; right: 10px; padding-top: 20px;}
+.channel{display: inline-block; width: 43px; margin: 0px 5px; padding: 4px; background: rgba(0, 0, 0, 0.3); border-radius: 4px; box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);}
+.track {position: relative;width: 8px;height: 280px;margin: 10px auto 0;background: #333;border-radius: 4px;}
+.fader {position: absolute;width: 26px;height: 30px;left: -9px;top: 200px;
 	background-image: -webkit-linear-gradient(top, 
 	rgba(150, 150, 150, 1) 0%, 
 	rgba(255, 255, 255, 1) 15%, 
