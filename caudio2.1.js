@@ -94,6 +94,8 @@ CPlayer.prototype = {
 				self.__play();
 				cont.children(".active").removeClass("active");
 				$(this).addClass("active");
+				$(".play_pause_bt", self.element).show();
+				$(".play_play_bt", self.element).hide();
 			});
 		}
 	},
@@ -155,14 +157,11 @@ CPlayer.prototype = {
 			self.loadLRC();
 			//加载专辑图片
 			self.loadAlbumImg()
-			self.player.stop();
-			self.player.cleatTime();
+			self.player.create(self.context);
 			this.playingsong.load(function(buffer){
 				var alltime = self.player.convertTime(self.playingsong.duration);
 				$(".timewrap .alltime", self.element).html(alltime);
-				self.player.buffer = buffer;
-				self.player.reload();
-				self.player.play();
+				self.player.play(buffer);
 				self.progress();
 				self.initialized = true;
 			});
@@ -205,6 +204,7 @@ CPlayer.prototype = {
 				
 				if(current > duration){
 					self.player.isPlaying = false;
+					self.player.stop();
 					self.__ending();
 					return false;
 				}
@@ -229,6 +229,7 @@ CPlayer.prototype = {
 	volumelistener: function(){
 		var self = this;
 		var vwidth = $(".volume_slide", this.element).width();
+		$(".play_volume_bt", self.element).data("x", -498);
 		$(".volume_slide", this.element).click(function(e){
 			var point = $(this).children(".vpoint");
 			if(e.target == point[0]){
@@ -243,15 +244,15 @@ CPlayer.prototype = {
 				}
 				var step = 0;
 				if(delta==0){
-					$(".play_volume_bt", self.element).css("background-position","0px 50%");
+					$(".play_volume_bt", self.element).css("background-position","0px 50%").data("x",0);
 				}else if(delta > 0 && delta <= 0.33){
-					$(".play_volume_bt", self.element).css("background-position","-290px 50%");
+					$(".play_volume_bt", self.element).css("background-position","-290px 50%").data("x",-290);
 				}
 				else if(delta > 0.33 && delta <= 0.67){
-					$(".play_volume_bt", self.element).css("background-position","-316px 50%");
+					$(".play_volume_bt", self.element).css("background-position","-316px 50%").data("x",-316);
 				}
 				else{
-					$(".play_volume_bt", self.element).css("background-position","-498px 50%");
+					$(".play_volume_bt", self.element).css("background-position","-498px 50%").data("x",-498);
 				}
 			});
 		});
@@ -260,6 +261,8 @@ CPlayer.prototype = {
 			var point = $(".volume_slide", self.element).children(".vpoint");
 			if($(this).hasClass("disable")){
 				$(this).removeClass("disable");
+				var x = $(".play_volume_bt", self.element).data("x");
+				$(".play_volume_bt", self.element).css("background-position",x+"px 50%")
 				var left = point.data("left");
 				$(".volume_slide_progress", self.element).animate({width: left}, 500);
 				point.animate({left: left}, 500);
@@ -268,6 +271,7 @@ CPlayer.prototype = {
 				}
 			}else{
 				$(this).addClass("disable");
+				$(".play_volume_bt", self.element).css("background-position","-82px 50%");
 				point.data("left", point.css("left"));
 				$(".volume_slide_progress", self.element).animate({width: 0}, 500);
 				point.animate({left: 0}, 500);
