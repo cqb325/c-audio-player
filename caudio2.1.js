@@ -316,20 +316,23 @@ CPlayer.prototype = {
 	 * 均衡器
 	 */
 	filterControlListeners: function(){
-		$(".fader", this.element).mousedown(function(){
-			$(this).addClass("active");
-			last = undefined;
-			max = $(this).parent().height() - $(this).height();
-			draghandle(this,'y');
-			
-			return false;
+		$(".fader", this.element).each(function(index){
+			$(this).mousedown(function(){
+				$(this).addClass("active");
+				last = undefined;
+				max = $(this).parent().height() - $(this).height();
+				draghandle(this,'y',index);
+				
+				return false;
+			});
 		});
 		
 		$(document).mouseup(function(){
 			$(".fader", this.element).removeClass("active");
 		});
 		
-		function draghandle(ele, dir){
+		var self = this;
+		function draghandle(ele, dir, index){
 			$(document).mousemove(function(e){
 				if($(ele).hasClass("active")){
 					var pos = dir == 'y' ? e.pageY : e.pageX;
@@ -347,7 +350,19 @@ CPlayer.prototype = {
 //						p.panner.setPosition(delta, 0, 0.5);
 					}else{
 						var delta = 1-lefttop/max;
-//						p.volume.gain.value = delta;
+						console.log(Math.sin(delta) * 20000);
+						if(index == 0){
+							self.player.lowpassfilter.frequency.value = Math.sin(delta) * 20000;
+						}
+						if(index == 1){
+							self.player.lowshelffilter.frequency.value = Math.sin(delta) * 20000;
+						}
+						if(index == 2){
+							self.player.bandpassfilter.frequency.value = Math.sin(delta) * 20000;
+						}
+						if(index == 3){
+							self.player.peakingfilter.frequency.value = Math.sin(delta) * 20000;
+						}
 					}
 				}
 				
